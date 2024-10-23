@@ -14,7 +14,7 @@
         $users = mysqli_fetch_array($result);
 
         // Correct password verification comparison
-        if ($password== $users['password']) {
+        if (password_verify($password,$users['password'])) {
 
           session_start();
           $_SESSION['username'] = $users['username']; // Fix variable name
