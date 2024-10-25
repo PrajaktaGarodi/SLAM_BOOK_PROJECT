@@ -22,7 +22,7 @@
 
           // Fix redirection typo
           echo "<script>alert('Login Successfully...');
-          window.location.href='dashboard.php';
+          window.location.href='main-dashboard.php';
           </script>";
         } else {
           echo "<script>alert('Incorrect Password...')</script>";
