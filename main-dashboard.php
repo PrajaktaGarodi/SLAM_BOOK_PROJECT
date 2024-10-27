@@ -395,22 +395,6 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="assets/dashboard_vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="assets/dashboard_vendors/chart.js/chart.umd.js"></script>
-    <script src="assets/dashboard_vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="assets/js/dashboard_js/off-canvas.js"></script>
-    <script src="assets/js/dashboard_js/misc.js"></script>
-    <script src="assets/js/dashboard_js/settings.js"></script>
-    <script src="assets/js/dashboard_js/todolist.js"></script>
-    <script src="assets/js/dashboard_js/jquery.cookie.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="assets/js/dashboard_js/dashboard.js"></script>
-    <!-- End custom js for this page -->
+   
   </body>
 </html>
