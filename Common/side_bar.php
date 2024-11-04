@@ -1,3 +1,10 @@
+<?php
+      session_start();
+      if (!isset($_SESSION['logged_in'])) {
+        header('Location: index.php');
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +35,7 @@
     <?php
     include('connection.php');
 
-    session_start();
+  
 
     $users = $_SESSION['username'];
 
@@ -436,7 +443,7 @@
           <ul class="nav">
             
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="/slambook_form.php">
                 <span class="menu-title">Create SlamBook</span>
                 <i class="mdi mdi-book-account menu-icon"></i>
               </a>

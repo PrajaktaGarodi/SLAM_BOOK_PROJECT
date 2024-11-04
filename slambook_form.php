@@ -22,6 +22,12 @@
     <link rel="stylesheet" href="assets/css/dashboard_css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/dashboard_images/favicon.png" />
+    <style>
+        .error {
+            color: red;
+            font-size: 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -50,12 +56,91 @@
         <?php
         include('Common/side_bar.php');
 
+        if (isset($_POST['submit'])) {
+            $fullname = $_POST['fullname'];
+            $nickname = $_POST['nickname'];
+            $dateofbirth = $_POST['dateofbirth'];
+            $email = $_POST['email'];
+            $phoneno = $_POST['phoneno'];
+            $gender = $_POST['gender'];
+            $profilephoto = $_FILES['profile']['name'];
+            $country = $_POST['country'];
+            $city = $_POST['city'];
+            $state = $_POST['state'];
+            $favoritecolor = $_POST['favcolor'];
+            $favoritesong = $_POST['favsong'];
+            $favoritemovies = $_POST['favmovies'];
+            $favoriteactress = $_POST['favactress'];
+            $favoriteactors = $_POST['favactors'];
+            $favoritesinger = $_POST['favsinger'];
+            $favoritefood = $_POST['favfood'];
+            $badhabbit = $_POST['badhabbit'];
+            $personalitywords = $_POST['personalitywords'];
+            $hobbies = $_POST['hobbies'];
+            $dreamgoal = $_POST['dreamgoal'];
+            $biggestfear = $_POST['biggestfear'];
+            $proudestachievement = $_POST['proudestachievement'];
+            $profilephoto = $_FILES['profile']['name'];
+            $bestchildhoodmemory = $_POST['bestchildhoodmemory'];
+            $funniestincident = $_POST['funniestincident'];
+            $mostembarrassingmoment = $_POST['mostembarrassingmoment'];
+            $favoritememorytogether = $_POST['favoritememorytogether'];
+            $adviceforme = $_POST['adviceforme'];
+            $hiddentalent = $_POST['hiddentalent'];
+            $essentialitem = $_POST['essentialitem'];
+            $dreamdestination = $_POST['dreamdestination'];
+            $specialmessage = $_POST['specialmessage'];
+
+            $check = "SELECT * FROM slambook WHERE fullname = '$fullname';";
+            $result = mysqli_query($conn, $check);
+            if (mysqli_num_rows($result) > 0) {
+                echo "<script>alert('User Already Registered')
+                window.location.href= 'slambook_form.php';</script>";
+            } else {
+                $folder = "assets/images/" . basename($filename);
+                move_uploaded_file($_FILES['profile']['tmp_name'], $folder);
+
+
+                $sql = "INSERT INTO slambook
+            (full_name,nickname,date_of_birth,email,phone_number,gender,profilephoto,country,city,state,favorite_color,favorite_song,favorite_movies,favorite_actress , favorite_actors, favorite_singer,	favorite_food , bad_habbit, personality_words , hobbies, dream_goal, biggest_fear, proudest_achievement, best_childhood_memory, funniest_incident, most_embarrassing_moment, favorite_memory_together, advice_for_me, hidden_talent, essential_item, dream_destination, special_message)
+
+            VALUES
+             ('$fullname','$nickname','$dateofbirth','$email','$phoneno','$gender','$profilephoto','$country','$city','$state','$favoritecolor','$favoritesong','$favoritemovies','$favoriteactress',  '$favorite_actors', '$favoritesinger', '$favoritefood', '$badhabbit', '$personalitywords', '$hobbies', '$dreamgoal', '$biggestfear', '$proudestachievement', '$best_childhood_memory', '$funniestincident', '$mostembarrassingmoment', '$favoritememorytogether', '$adviceforme', '$hiddentalent', '$essentialitem', '$dreamdestination', '$specialmessage' )";
+
+                $result = mysqli_query($conn, $sql);
+                if ($result)
+                 {
+                    echo "<script>alert('Form Submitted Successfully')
+                    window.location.href= 'slambook_form.php';</script>";
+
+                }
+                
+                else 
+                {
+                    echo "<script>alert('Form Submitted Failed')
+                     window.location.href= 'slambook_form.php';</script>";
+                }
+            }
+
+
+
+
+
+        }
+
+
+
+
+
         ?>
+
+
+
 
         <div class="main-panel">
             <div class="content-wrapper">
-            <form action="slambook_form.php" method="Post" id="slambook"  entype="multipart/form-data">
-                <div class="row">
+                <form action="slambook_form.php" method="Post" id="slambook" entype="multipart/form-data">
+                    <div class="row">
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
@@ -65,27 +150,27 @@
                                         <div class="form-group">
                                             <label for="exampleInputName1">Full Name</label>
                                             <input type="text" class="form-control" id="exampleInputName1"
-                                                placeholder="Full Name" name="fullname">
+                                                placeholder="Full Name" name="fullname" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputName1">Nick Name</label>
                                             <input type="text" class="form-control" id="exampleInputName1"
-                                                placeholder="Nick Name" name="nickname">
+                                                placeholder="Nick Name" name="nickname" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputName1">Date Of Birth</label>
                                             <input type="date" class="form-control" id="exampleInputName1"
-                                                placeholder="Name" name="dateofbirth">
+                                                placeholder="Name" name="dateofbirth" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail3">Email address</label>
                                             <input type="email" class="form-control" id="exampleInputEmail3"
-                                                placeholder="Email" name="email">
+                                                placeholder="Email" name="email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail3">Phone No.</label>
                                             <input type="number" class="form-control" id="exampleInputEmail3"
-                                                placeholder="Phone no" name="phoneno">
+                                                placeholder="Phone no" name="phoneno" required>
                                         </div>
 
                                         <div class="form-group">
@@ -93,40 +178,40 @@
                                             <div class="form-check form-check-primary">
                                                 <label class="form-check-label">
                                                     <input type="radio" class="form-check-input" name="gender"
-                                                        value="male" id="gender"> Male</label>
+                                                        value="male" id="gender" required> Male</label>
                                             </div>
                                             <div class="form-check form-check-primary">
                                                 <label class="form-check-label">
                                                     <input type="radio" class="form-check-input" name="gender"
-                                                        value="female" id="gender"> Female</label>
+                                                        value="female" id="gender" required> Female</label>
                                             </div>
                                             <div class="form-check form-check-primary">
                                                 <label class="form-check-label">
                                                     <input type="radio" class="form-check-input" name="gender"
-                                                        value="other" id="gender"> Other</label>
+                                                        value="other" id="gender" required> Other</label>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputName1">Profile Photo</label>
                                             <input type="file" class="form-control" id="exampleInputName1"
-                                                placeholder="Profile Photo" name="profile">
+                                                placeholder="Profile Photo" name="profile" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputCity1">Country</label>
                                             <input type="text" class="form-control" id="exampleInputCity1"
-                                                placeholder="Country" name="conitry">
+                                                placeholder="Country" name="country" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputCity1">State</label>
                                             <input type="text" class="form-control" id="exampleInputCity1"
-                                                placeholder="State" name="state">
+                                                placeholder="State" name="state" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputCity1">City</label>
                                             <input type="text" class="form-control" id="exampleInputCity1"
-                                                placeholder="City" name="city">
+                                                placeholder="City" name="city" required>
                                         </div>
                                     </div>
                                 </div>
@@ -165,7 +250,7 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Favorite Actress</label>
                                             <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Favorite Actress" name="favactrees">
+                                                placeholder="Favorite Actress" name="favactress">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Favorite Singer</label>
@@ -218,7 +303,7 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Proudest Achievement</label>
                                             <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Proudest Achievement" name=">proudestchaievement<">
+                                                placeholder="Proudest Achievement" name="proudestchaievement">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Best Childhood Memory</label>
@@ -241,7 +326,7 @@
                                         <div class="form-group">
                                             <label for="exampleInputName1">Funniest Incident </label>
                                             <input type="text" class="form-control" id="exampleInputName1"
-                                                placeholder="Funniest Incident" name="funniestincident	">
+                                                placeholder="Funniest Incident" name="funniestincident">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputName1">Most Embarrassing Moment</label>
@@ -282,14 +367,23 @@
                                         </div>
 
 
-                                        <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                                        <button type="submit" name="submit" class="btn btn-gradient-primary me-2">Submit</button>
                                         <button class="btn btn-light">Cancel</button>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                     </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+    </div>
+
+    <!-- 
+    <script src="assets/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="assets/jQuery/jquery-ui.min.js"></script>
+    <script src="assets/jQuery/jquery.validate.min.js"></script>
+    <!-- <script src="assets/jQuery/jquery-3.7.1.js"></script> -->
+    <script src="assets/js/slam_book_form_js/script.js"></script> -->
