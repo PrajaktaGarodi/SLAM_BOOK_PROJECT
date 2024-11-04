@@ -63,15 +63,15 @@
             $email = $_POST['email'];
             $phoneno = $_POST['phoneno'];
             $gender = $_POST['gender'];
-            $profilephoto = $_FILES['profile']['name'];
+            $profilephoto = $_FILES["profile"]["name"];
             $country = $_POST['country'];
             $city = $_POST['city'];
             $state = $_POST['state'];
             $favoritecolor = $_POST['favcolor'];
             $favoritesong = $_POST['favsong'];
-            $favoritemovies = $_POST['favmovies'];
+            $favoritemovies = $_POST['favmovie'];
             $favoriteactress = $_POST['favactress'];
-            $favoriteactors = $_POST['favactors'];
+            $favoriteactors = $_POST['favactor'];
             $favoritesinger = $_POST['favsinger'];
             $favoritefood = $_POST['favfood'];
             $badhabbit = $_POST['badhabbit'];
@@ -79,8 +79,8 @@
             $hobbies = $_POST['hobbies'];
             $dreamgoal = $_POST['dreamgoal'];
             $biggestfear = $_POST['biggestfear'];
-            $proudestachievement = $_POST['proudestachievement'];
-            $profilephoto = $_FILES['profile']['name'];
+            $proudestachievement = $_POST['achievement'];
+            // $profilephoto = $_FILES['profile']['name'];
             $bestchildhoodmemory = $_POST['bestchildhoodmemory'];
             $funniestincident = $_POST['funniestincident'];
             $mostembarrassingmoment = $_POST['mostembarrassingmoment'];
@@ -91,32 +91,28 @@
             $dreamdestination = $_POST['dreamdestination'];
             $specialmessage = $_POST['specialmessage'];
 
-            $check = "SELECT * FROM slambook WHERE fullname = '$fullname';";
+            $check = "SELECT * FROM slambook WHERE full_name = '$fullname';";
             $result = mysqli_query($conn, $check);
             if (mysqli_num_rows($result) > 0) {
                 echo "<script>alert('User Already Registered')
                 window.location.href= 'slambook_form.php';</script>";
             } else {
-                $folder = "assets/images/" . basename($filename);
+                $folder = "assets/images/" . basename($profilephoto);
                 move_uploaded_file($_FILES['profile']['tmp_name'], $folder);
 
 
                 $sql = "INSERT INTO slambook
-            (full_name,nickname,date_of_birth,email,phone_number,gender,profilephoto,country,city,state,favorite_color,favorite_song,favorite_movies,favorite_actress , favorite_actors, favorite_singer,	favorite_food , bad_habbit, personality_words , hobbies, dream_goal, biggest_fear, proudest_achievement, best_childhood_memory, funniest_incident, most_embarrassing_moment, favorite_memory_together, advice_for_me, hidden_talent, essential_item, dream_destination, special_message)
+            (full_name,nickname,date_of_birth,email,phone_number,gender,profilephoto,country,city,state,favorite_color,favorite_song,favorite_movie,favorite_actress , favorite_actors, favorite_singer,	favorite_food , bad_habbit, personality_words , hobbies, dream_goal, biggest_fear, proudest_achievement, best_childhood_memory, funniest_incident, most_embarrassing_moment, favorite_memory_together, advice_for_me, hidden_talent, essential_item, dream_destination, special_message)
 
             VALUES
-             ('$fullname','$nickname','$dateofbirth','$email','$phoneno','$gender','$profilephoto','$country','$city','$state','$favoritecolor','$favoritesong','$favoritemovies','$favoriteactress',  '$favorite_actors', '$favoritesinger', '$favoritefood', '$badhabbit', '$personalitywords', '$hobbies', '$dreamgoal', '$biggestfear', '$proudestachievement', '$best_childhood_memory', '$funniestincident', '$mostembarrassingmoment', '$favoritememorytogether', '$adviceforme', '$hiddentalent', '$essentialitem', '$dreamdestination', '$specialmessage' )";
+             ('$fullname','$nickname','$dateofbirth','$email','$phoneno','$gender','$profilephoto','$country','$city','$state','$favoritecolor','$favoritesong','$favoritemovies','$favoriteactress',  '$favoriteactors', '$favoritesinger', '$favoritefood', '$badhabbit', '$personalitywords', '$hobbies', '$dreamgoal', '$biggestfear', '$proudestachievement', '$bestchildhoodmemory', '$funniestincident', '$mostembarrassingmoment', '$favoritememorytogether', '$adviceforme', '$hiddentalent', '$essentialitem', '$dreamdestination', '$specialmessage' );";
 
                 $result = mysqli_query($conn, $sql);
-                if ($result)
-                 {
+                if ($result) {
                     echo "<script>alert('Form Submitted Successfully')
                     window.location.href= 'slambook_form.php';</script>";
 
-                }
-                
-                else 
-                {
+                } else {
                     echo "<script>alert('Form Submitted Failed')
                      window.location.href= 'slambook_form.php';</script>";
                 }
@@ -139,7 +135,7 @@
 
         <div class="main-panel">
             <div class="content-wrapper">
-                <form action="slambook_form.php" method="Post" id="slambook" entype="multipart/form-data">
+                <form action="slambook_form.php" method="post" id="slambook" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card">
@@ -194,8 +190,8 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputName1">Profile Photo</label>
-                                            <input type="file" class="form-control" id="exampleInputName1"
-                                                placeholder="Profile Photo" name="profile" required>
+                                            <input type="file" class="form-control"  name="profile" id="profile"
+                                                placeholder="Profile Photo" required>
                                         </div>
 
                                         <div class="form-group">
@@ -303,7 +299,7 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Proudest Achievement</label>
                                             <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Proudest Achievement" name="proudestchaievement">
+                                                placeholder="Proudest Achievement" name="achievement">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Best Childhood Memory</label>
@@ -317,7 +313,7 @@
 
 
 
-                        <div class="col-12 grid-margin stretch-card">
+                        <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <!-- <h4 class="card-title mb-5"> BASIC INFORMATIONS</h4> -->
@@ -367,7 +363,8 @@
                                         </div>
 
 
-                                        <button type="submit" name="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                                        <button type="submit" name="submit"
+                                            class="btn btn-gradient-primary me-2">Submit</button>
                                         <button class="btn btn-light">Cancel</button>
                                     </div>
                                 </div>
@@ -378,7 +375,6 @@
                 </form>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- 
