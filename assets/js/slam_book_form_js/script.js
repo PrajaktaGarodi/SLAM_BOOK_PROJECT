@@ -76,7 +76,7 @@ $(document).ready(function(){
             biggestfear:{
                 required: true
             },
-            proudestchaievement:{
+            achievement:{
                 required: true
             },
             bestchildhoodmemory:{
@@ -183,7 +183,7 @@ $(document).ready(function(){
             biggestfear:{
                 required: "Please enter your biggest fear"
             },
-            proudestchaievement:{
+            achievement:{
                 required: "Please enter your proudest achievement"
             },
             bestchildhoodmemory:{
