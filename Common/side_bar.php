@@ -232,7 +232,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="user_table.php">
                 <span class="menu-title">User</span>
                 <i class="mdi mdi-account-group menu-icon"></i>
               </a>

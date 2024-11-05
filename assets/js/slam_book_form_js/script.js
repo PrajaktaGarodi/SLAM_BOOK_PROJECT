@@ -9,10 +9,11 @@ $(document).ready(function(){
                 required: true,
                 email: true
             },
-            contact:{
+            phoneno: {
                 required: true,
                 minlength: 10,
-                maxlength: 10
+                maxlength: 10,
+                number: true
             },
             address:{
                 required: true,
@@ -115,10 +116,11 @@ $(document).ready(function(){
                 required: "Please enter your email address",
                 email: "Please enter a valid email address"
             },
-            contact:{
-                required: "Please enter your contact number",
-                minlength: "Your contact number must be 10 digits long",
-                maxlength: "Your contact number must be 10 digits long"
+            phoneno:{
+                required: "Please enter your phone number",
+                minlength: "Your phone number must be 10 digits long",
+                maxlength: "Your phone number must be 10 digits long",
+                number: "Please enter a valid phone number"
             },
             address:{
                 required: "Please enter your address",
