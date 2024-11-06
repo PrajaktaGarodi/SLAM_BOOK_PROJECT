@@ -56,9 +56,8 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="/assets/dashboard_images/logo.svg"
-                        alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/assets/dashboard_images/logo-mini.svg"
+                <a class="navbar-brand brand-logo" href="main-dashboard.php"><h1 style="color:#B66DFF;">SlamBook</h1></a>
+                <a class="navbar-brand brand-logo-mini" href="main-dashboard.php"><img src="/assets/dashboard_images/logo-mini.svg"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -227,7 +226,7 @@
           <ul class="nav">
             
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="/main-dashboard.php">
                 <span class="menu-title">DashBoard</span>
                 <i class="mdi mdi-book-account menu-icon"></i>
               </a>
@@ -241,7 +240,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="">
                 <span class="menu-title">Guest</span>
                 <i class="mdi mdi-account menu-icon"></i>
               </a>
@@ -275,9 +274,9 @@
 
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="/assets/dashboard_images/logo.svg"
+                <a class="navbar-brand brand-logo" href="main-dashboard.php"><img src="/assets/dashboard_images/logo.svg"
                         alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/assets/dashboard_images/logo-mini.svg"
+                <a class="navbar-brand brand-logo-mini" href="main-dashboard.php"><img src="/assets/dashboard_images/logo-mini.svg"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">

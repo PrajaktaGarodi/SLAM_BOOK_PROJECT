@@ -53,16 +53,46 @@
                 <div class="content-wrapper">
                     <div class="container">
                         <h1>User Details</h1>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="card-title text-center fw-">
-                                        Profile
+                        <div class="col-md-12 mt-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="card-title text-center fw-">
+                                                Profile
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-column justify-content-center">
+                                            <img src="assets/images/<?php echo $row['profile'] ?>"
+                                                class="img-fluid rounded-circle" alt="image" />
+                                            <h2 class="text-center mt-2"><?php echo $row['username'] ?></h2>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                <img src="assets/images/<?php echo $row['profile'] ?>" class="img-fluid rounded-circle" alt="image" />
-                                <h2 class="text-center mt-2" ><?php echo $row['username'] ?></h2>
+
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="card-title text-center">
+                                                User Details
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                        <h6 class="text-secondary fw-bold">Name :</h6>
+                                                        <p><?php echo $row['username']; ?></p>
+                                                </div>
+                                                
+                                                <div class="col-md-6">
+                                                    
+                                                        <h6 class="text-secondary fw-bold">Email :</h6>
+                                                        <p><?php echo $row['email'];?></p>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
