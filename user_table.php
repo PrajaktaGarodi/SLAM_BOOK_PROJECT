@@ -35,35 +35,20 @@
 
         <?php
         include('Common/side_bar.php');
-        if ($result['role_id'] == 1) {
+        if ($result['role_id'] == 1) 
+        {
 
-            // if (isset($_GET['active_id'])) {
-            //     $user_id = $_GET['active_id'];
-            //     $sql = "SELECT * FROM `users` WHERE   user_id = $user_id";
-            //     $result = mysqli_query($conn, $sql);
-            //     $row = mysqli_fetch_assoc($result);
-            //     $status = $row['status'];
 
-            //     if ($status == "active") {
-            //         $query = "UPDATE users set status='inactive' WHERE user_id = '$user_id'";
-            //         $result = mysqli_query($conn, $query);
-            //         if ($result) {
-            //             echo "<script>alert('User has been deactivated successfully.');</script>";
+            if(isset($_GET['delete_id']))
+            {
+                $delete_id = $_GET['delete_id'];
 
-            //         } else {
-            //             echo "<script>alert('Failed to deactivate user.');</script>";
-            //         }
-            //     }
-            //     elseif($status == "inactive") {
-            //         $query = "UPDATE users set status='active' WHERE user_id = '$user_id'";
-            //         $result = mysqli_query($conn, $query);
-            //         if ($result) {
-            //             echo "<script>alert('User has been activated successfully.');</script>";
-            //         } else {
-            //             echo "<script>alert('Failed to activate user.');</script>";
-            //         }
-            //     }
-            // }
+                $sql = mysqli_query($conn, "DELETE FROM users WHERE user_id = '$delete_id'");
+                echo "<script>alert('User deleted');</script>";
+                echo "<script>window.location.href = 'user_table.php'</script>";
+
+
+            }
 
             if (isset($_GET['active_id'])) {
                 $rid = intval($_GET['active_id']);
@@ -154,7 +139,7 @@
                                                         }
 
                                                         ?>
-                                                        <a href="user_view.php?dlt_id=<?php echo $row['user_id'] ?>"><i
+                                                        <a href="user_table.php?delete_id=<?php echo $row['user_id'] ?>"><i
                                                                 class="fa-solid fa-trash "> </i></a>
                                                     </td>
 
