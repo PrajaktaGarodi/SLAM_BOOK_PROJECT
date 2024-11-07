@@ -226,7 +226,7 @@
           <ul class="nav">
             
             <li class="nav-item">
-              <a class="nav-link" href="/main-dashboard.php">
+              <a class="nav-link" href="main-dashboard.php">
                 <span class="menu-title">DashBoard</span>
                 <i class="mdi mdi-book-account menu-icon"></i>
               </a>
