@@ -90,6 +90,50 @@
                                                         <p><?php echo $row['email'];?></p>
                                                 
                                                 </div>
+
+                                                <div class="col-md-6">
+                                                    
+                                                        <h6 class="text-secondary fw-bold">Contact:</h6>
+                                                        <p><?php echo $row['contact'];?></p>
+                                                
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    
+                                                        <h6 class="text-secondary fw-bold">Adderss:</h6>
+                                                        <p><?php echo $row['address'];?></p>
+                                                
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    
+                                                        <h6 class="text-secondary fw-bold">Gender:</h6>
+                                                        <p><?php echo $row['gender'];?></p>
+                                                
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    
+                                                        <h6 class="text-secondary fw-bold">Account Created on:</h6>
+                                                        <p><?php echo $row['created_at'];?></p>
+                                                
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    
+                                                        <h6 class="text-secondary fw-bold">Account Update On:</h6>
+                                                        <p><?php echo $row['updated_at'];?></p>
+                                                
+                                                </div>
+                                                
+                                                <div class="col-md-6">
+                                                    
+                                                        <h6 class="text-secondary fw-bold">Account Update On:</h6>
+                                                        <p><?php echo $row['updated_at'];?></p>
+                                                
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
