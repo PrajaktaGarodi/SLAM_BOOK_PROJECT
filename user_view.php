@@ -128,8 +128,21 @@
                                                 
                                                 <div class="col-md-6">
                                                     
-                                                        <h6 class="text-secondary fw-bold">Account Update On:</h6>
-                                                        <p><?php echo $row['updated_at'];?></p>
+                                                        <h6 class="text-secondary fw-bold">Status :</h6>
+                                                        
+                                                            <?php 
+                                                                if ($row['status'] =='active') 
+                                                                {
+                                                                    echo '<p class="text-success"> Active </p>';
+                                                                } 
+                                                                else 
+                                                                {
+                                                                    echo '<p class="text-danger"> Inactive </p>';
+                                                                }
+
+                                                        
+                                                            ?>
+                                                        
                                                 
                                                 </div>
 

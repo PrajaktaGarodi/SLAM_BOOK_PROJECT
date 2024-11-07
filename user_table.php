@@ -32,69 +32,151 @@
 
 <body>
     <div class="container-scroller">
-        
+
         <?php
         include('Common/side_bar.php');
-        if ($result['role_id'] == 1) 
-        {
-            $sql = "SELECT * FROM users where role_id = 2;" ;
+        if ($result['role_id'] == 1) {
+
+            // if (isset($_GET['active_id'])) {
+            //     $user_id = $_GET['active_id'];
+            //     $sql = "SELECT * FROM `users` WHERE   user_id = $user_id";
+            //     $result = mysqli_query($conn, $sql);
+            //     $row = mysqli_fetch_assoc($result);
+            //     $status = $row['status'];
+
+            //     if ($status == "active") {
+            //         $query = "UPDATE users set status='inactive' WHERE user_id = '$user_id'";
+            //         $result = mysqli_query($conn, $query);
+            //         if ($result) {
+            //             echo "<script>alert('User has been deactivated successfully.');</script>";
+
+            //         } else {
+            //             echo "<script>alert('Failed to deactivate user.');</script>";
+            //         }
+            //     }
+            //     elseif($status == "inactive") {
+            //         $query = "UPDATE users set status='active' WHERE user_id = '$user_id'";
+            //         $result = mysqli_query($conn, $query);
+            //         if ($result) {
+            //             echo "<script>alert('User has been activated successfully.');</script>";
+            //         } else {
+            //             echo "<script>alert('Failed to activate user.');</script>";
+            //         }
+            //     }
+            // }
+
+            if (isset($_GET['active_id'])) {
+                $rid = intval($_GET['active_id']);
+
+                $check = "SELECT * FROM users WHERE user_id = $rid;";
+
+                $result = mysqli_query($conn, $check);
+                $check_row = mysqli_fetch_array($result);
+
+                $status = $check_row['status'];
+
+                if ($status == 'inactive') {
+
+
+                    $sql = mysqli_query($conn, "UPDATE users SET status = 'active' WHERE user_id = '$rid'");
+                    echo "<script>alert('User Activated');</script>";
+                    echo "<script>window.location.href = 'user_table.php'</script>";
+                }
+                if ($status == 'active') {
+                    $sql = mysqli_query($conn, "UPDATE users SET status = 'inactive' WHERE user_id = '$rid'");
+                    echo "<script>alert('User Deactivated');</script>";
+                    echo "<script>window.location.href = 'user_table.php'</script>";
+                }
+            }
+
+
+            $sql = "SELECT * FROM users where role_id = 2;";
             $query = mysqli_query($conn, $sql);
-                    
-        ?>
 
-        <div class="main-panel">
-            <div class="content-wrapper">
-                <div class="container">
-                    <div class="col-lg-12  grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Users In slambook</h4>
-                                <p class="card-description"> 
-                                </p>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th> Profile </th>
-                                            <th> username </th>
-                                            <th> Address </th>
-                                            <th> Phone No </th>
-                                            <th> Status</th>
-                                            <th> Action </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php while($row = mysqli_fetch_assoc($query)) {?>
+            ?>
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="container">
+                        <div class="col-lg-12  grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Users In slambook</h4>
+                                    <p class="card-description">
+                                    </p>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th> Profile </th>
+                                                <th> username </th>
+                                                <th> Address </th>
+                                                <th> Phone No </th>
+                                                <th> Status</th>
+                                                <th> Action </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php while ($row = mysqli_fetch_assoc($query)) { ?>
 
 
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="assets/images/<?php echo $row['profile'] ?>" alt="image" />
-                                            </td>
-                                            <td> <?php echo $row['username'] ?> </td>
-                                            <td> <?php echo $row['address'] ?> </td>
-                                            <td> <?php echo $row['contact'] ?> </td>
-                                            <td> <?php echo $row['status'] ?> </td>
-                                            <td>  <a href="user_view.php?user_id=<?php echo $row['user_id']?>"><i class="fa-solid fa-eye"></i></a>
-                                            <a href=""><i class="fa-solid fa-user-pen"></i></a>
-                                            <a href=""><i class="fa-solid fa-trash"> </i></a> 
-                                   </td>
-                                            
+                                                <tr>
+                                                    <td class="py-1">
+                                                        <img src="assets/images/<?php echo $row['profile'] ?>" alt="image" />
+                                                    </td>
+                                                    <td> <?php echo $row['username'] ?> </td>
+                                                    <td> <?php echo $row['address'] ?> </td>
+                                                    <td> <?php echo $row['contact'] ?> </td>
+                                                    <td> <?php echo $row['status'] ?> </td>
+                                                    <td>
+                                                        <a href="user_view.php?user_id=<?php echo $row['user_id'] ?>"><i
+                                                                class="fa-solid fa-eye"></i></a>
 
-                                               
-                                        <?php 
-                                    
-                                    
-                                    }?>
-                                    
-                                    </tbody>
-                                </table>
+                                                        <?php
+                                                        if ($row['status'] == 'active') {
+                                                            ?>
+
+                                                            <a href="user_table.php?active_id=<?php echo $row['user_id'] ?>"><i
+                                                                    class="fa-solid fa-user-pen text-danger"></i></a>
+
+
+                                                            <?php
+
+
+                                                        } else if ($row['status'] == 'inactive') {
+
+                                                            ?>
+                                                                <a href="user_table.php?active_id=<?php echo $row['user_id'] ?>"><i
+                                                                        class="fa-solid fa-user-pen text-success"></i></a>
+
+
+                                                            <?php
+
+                                                        }
+
+                                                        ?>
+                                                        <a href="user_view.php?dlt_id=<?php echo $row['user_id'] ?>"><i
+                                                                class="fa-solid fa-trash "> </i></a>
+                                                    </td>
+
+
+
+                                                    <?php
+
+
+                                            } ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php
+            <?php
         }
         ?>
     </div>
+
+
+    
