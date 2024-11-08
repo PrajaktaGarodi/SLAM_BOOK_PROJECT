@@ -87,25 +87,117 @@
          
             </div>
             <div class="row">
-              <div class="col-md-7 grid-margin stretch-card">
+              <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <h4 class="card-title float-start">Visit And Sales Statistics</h4>
-                      <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-end"></div>
+                  <div class="card-header">
+                    <div class="card-title text-center">
+                      New  Users
                     </div>
-                    <canvas id="visit-sale-chart" class="mt-4"></canvas>
+                  </div>
+                  <div class="card-body">
+                    <div class= table-responsive>
+                    <table class="table table-striped">
+                      <thead class=thead-light>
+                        <tr>
+                          <th>User</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Address</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                        
+                      <tbody>
+                        <?php 
+                         $currentdate = date('Y-m-d');
+                          $sql = "SELECT * FROM  users WHERE DATE(created_at)  = '$currentdate';";
+                          
+                          $result = mysqli_query($conn, $sql);
+                          if (mysqli_num_rows($result))
+                          {
+                            while ($row = mysqli_fetch_array($result))
+                            {
+                            ?>
+
+                            <tr>
+                              <td><?php echo $row['username']?></td>
+                              <td><?php echo $row['email']?></td>
+                              <td><?php echo $row['contact']?></td>
+                              <td><?php echo $row['address']?></td>
+                              <td> <a href="user_view.php?user_id=<?php echo $row['user_id'] ?>"><i class="fa-solid fa-eye"></i></a></td>
+                            </tr>
+
+
+                            <?php
+                            }
+                          }
+                          else{
+                            echo "<td colspan=5 class='text-center'>No records found</td>";
+                          }
+                        ?>
+                      </tbody>
+                      
+                    </table>
+
+                    </div>
+                    
                   </div>
                 </div>
               </div>
-              <div class="col-md-5 grid-margin stretch-card">
+              <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Traffic Sources</h4>
-                    <div class="doughnutjs-wrapper d-flex justify-content-center">
-                      <canvas id="traffic-chart"></canvas>
+                  <div class="card-header">
+                    <div class="card-title text-center">
+                      New  Slambook
                     </div>
-                    <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
+                  </div>
+                  <div class="card-body">
+                    <div class= table-responsive>
+                    <table class="table table-striped">
+                      <thead class=thead-light>
+                        <tr>
+                          <th>User</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Address</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                        
+                      <tbody>
+                        <?php 
+                         $currentdate = date('Y-m-d');
+                          $sql = "SELECT * FROM  slambook WHERE DATE(created_at)  = '$currentdate';";
+                          
+                          $result = mysqli_query($conn, $sql);
+                          if (mysqli_num_rows($result))
+                          {
+                            while ($row = mysqli_fetch_array($result))
+                            {
+                            ?>
+
+                            <tr>
+                              <td><?php echo $row['username']?></td>
+                              <td><?php echo $row['email']?></td>
+                              <td><?php echo $row['contact']?></td>
+                              <td><?php echo $row['address']?></td>
+                              <td> <a href="user_view.php?user_id=<?php echo $row['user_id'] ?>"><i class="fa-solid fa-eye"></i></a></td>
+                            </tr>
+
+
+                            <?php
+                            }
+                          }
+                          else{
+                            echo "<td colspan=5 class='text-center'>No records found</td>";
+                          }
+                        ?>
+                      </tbody>
+                      
+                    </table>
+
+                    </div>
+                    
                   </div>
                 </div>
               </div>
