@@ -39,43 +39,7 @@
         {
 
 
-            if(isset($_GET['delete_id']))
-            {
-                $delete_id = $_GET['delete_id'];
-
-                $sql = mysqli_query($conn, "DELETE FROM users WHERE user_id = '$delete_id'");
-                echo "<script>alert('User deleted');</script>";
-                echo "<script>window.location.href = 'user_table.php'</script>";
-
-
-            }
-
-            if (isset($_GET['active_id'])) {
-                $rid = intval($_GET['active_id']);
-
-                $check = "SELECT * FROM users WHERE user_id = $rid;";
-
-                $result = mysqli_query($conn, $check);
-                $check_row = mysqli_fetch_array($result);
-
-                $status = $check_row['status'];
-
-                if ($status == 'inactive') {
-
-
-                    $sql = mysqli_query($conn, "UPDATE users SET status = 'active' WHERE user_id = '$rid'");
-                    echo "<script>alert('User Activated');</script>";
-                    echo "<script>window.location.href = 'user_table.php'</script>";
-                }
-                if ($status == 'active') {
-                    $sql = mysqli_query($conn, "UPDATE users SET status = 'inactive' WHERE user_id = '$rid'");
-                    echo "<script>alert('User Deactivated');</script>";
-                    echo "<script>window.location.href = 'user_table.php'</script>";
-                }
-            }
-
-
-            $sql = "SELECT * FROM users where role_id = 2;";
+          
             $query = mysqli_query($conn, $sql);
 
             ?>
