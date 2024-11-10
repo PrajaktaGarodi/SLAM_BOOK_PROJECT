@@ -60,7 +60,7 @@
                 <a class="navbar-brand brand-logo-mini" href="main-dashboard.php"><img src="/assets/dashboard_images/logo-mini.svg"
                         alt="logo" /></a>
             </div>
-            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
@@ -215,7 +215,7 @@
                     data-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>
                 </button>
-            </div>
+            </div> 
         </nav>
         <!-- partial -->
 
