@@ -178,7 +178,7 @@
                               <td><?php echo $row['email'] ?></td>
                               <td><?php echo $row['phone_number'] ?></td>
                               <td><?php echo $row['status'] ?></td>
-                              <td> <a href="user_view.php?user_id=<?php echo $row['user_id'] ?>"><i
+                              <td> <a href="show_slam_book.php?slambook_id=<?php echo $row['id'] ?>"><i
                                     class="fa-solid fa-eye"></i></a></td>
                             </tr>
 
@@ -306,7 +306,7 @@
                               </td>
 
                               <td>
-                                <a href="slambook_view.php?user_id=<?php echo $row['id'] ?>"><i class="fa-solid fa-eye"></i></a>
+                                <a href="show_slam_book.php?slambook_id=<?php echo $row['id'] ?>"><i class="fa-solid fa-eye"></i></a>
 
                                 <a href="slam_book_edit.php?slambook_id<?php echo $row['id'] ?>"><i
                                     class="fa-regular fa-pen-to-square"></i></a>

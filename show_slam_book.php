@@ -26,6 +26,10 @@
         .error {
             color: red;
             font-size: 15px;
+
+            .card {
+                background: transparent !important;
+            }
         }
     </style>
 </head>
@@ -35,26 +39,57 @@
 
         <?php
         include('Common/side_bar.php');
-        if ($result['role_id'] == 2) 
-        {
+        if ($result['role_id'] == 2) {
+
+            if (isset($_GET['slambook_id'])) {
+                $slambook_id = $_GET['slambook_id'];
+                $query = "SELECT * FROM slambook WHERE id = $slambook_id";
+                $result = mysqli_query($conn, $query);
+                $row = mysqli_fetch_assoc($result);
 
 
-          
-            $query = mysqli_query($conn, $sql);
+                ?>
 
-            ?>
+                <div class="main-panel">
+                    <div class="content-wrapper"
+                        style="background-image:url('assets/images/bg1.jpg'); background-repeat:no-repeat; width:100%; background-size: cover; background-position:center;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h1>About Me</h1>
+                                        </div>
 
-            <div class="main-panel" >
-                <div class="content-wrapper"   style="background-image:url('assets/images/bg1.jpg'); background-repeat:no-repeat; width:100%; background-size: cover; background-position:center;" >
-                    <div class="container">
-                       
+                                        <div class="card-body">
+                                            <h3>Name: <?php echo $row['full_name']; ?></h3>
+                                            <p>Nickname: <?php echo $row['nickname']; ?></p>
+                                            <p>Phone No.: <?php echo $row['phone_number']; ?></p>
+                                            <p>Email: <?php echo $row['email']; ?></p>
+                                            <p>Date of Birth : <?php $date = date_create($row['date_of_birth']);
+                                            echo date_format($date, "d-m-Y"); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h1>Image</h1>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <img src="assets/images/ <?php echo $row['profilephoto']; ?>" alt="User Image"
+                                                class="img-fluid" style="width:100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <?php
+                <?php
+            }
         }
         ?>
     </div>
-
-
-    
