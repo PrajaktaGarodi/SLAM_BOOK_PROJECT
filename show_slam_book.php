@@ -47,7 +47,7 @@
             <div class="main-panel" >
                 <div class="content-wrapper"   style="background-image:url('assets/images/bg1.jpg'); background-repeat:no-repeat; width:100%; background-size: cover; background-position:center;" >
                     <div class="container">
-                       <h1>welcome</h1>
+                       
                     </div>
                 </div>
             </div>
