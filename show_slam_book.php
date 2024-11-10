@@ -35,7 +35,7 @@
 
         <?php
         include('Common/side_bar.php');
-        if ($result['role_id'] == 1) 
+        if ($result['role_id'] == 2) 
         {
 
 
@@ -45,7 +45,7 @@
             ?>
 
             <div class="main-panel" >
-                <div class="content-wrapper"   style="background-image:url('assets/images/bg1.jpg'); background-repeat:no-repeat; width:100%; background-size: cover;" >
+                <div class="content-wrapper"   style="background-image:url('assets/images/bg1.jpg'); background-repeat:no-repeat; width:100%; background-size: cover; background-position:center;" >
                     <div class="container">
                        <h1>welcome</h1>
                     </div>

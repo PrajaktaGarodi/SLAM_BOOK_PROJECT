@@ -37,6 +37,7 @@
         include('Common/side_bar.php');
 
         if (isset($_POST['submit'])) {
+            $user_id=$result['user_id'];
             $fullname = $_POST['fullname'];
             $nickname = $_POST['nickname'];
             $dateofbirth = $_POST['dateofbirth'];
@@ -71,6 +72,8 @@
             $dreamdestination = $_POST['dreamdestination'];
             $specialmessage = $_POST['specialmessage'];
 
+
+
             $check = "SELECT * FROM slambook WHERE full_name = '$fullname';";
             $result = mysqli_query($conn, $check);
             if (mysqli_num_rows($result) > 0) {
@@ -82,10 +85,10 @@
 
 
                 $sql = "INSERT INTO slambook
-            (full_name,nickname,date_of_birth,email,phone_number,gender,profilephoto,country,city,state,favorite_color,favorite_song,favorite_movie,favorite_actress , favorite_actors, favorite_singer,	favorite_food , bad_habbit, personality_words , hobbies, dream_goal, biggest_fear, proudest_achievement, best_childhood_memory, funniest_incident, most_embarrassing_moment, favorite_memory_together, advice_for_me, hidden_talent, essential_item, dream_destination, special_message)
+            (full_name,nickname,date_of_birth,email,phone_number,gender,profilephoto,country,city,state,favorite_color,favorite_song,favorite_movie,favorite_actress , favorite_actors, favorite_singer,	favorite_food , bad_habbit, personality_words , hobbies, dream_goal, biggest_fear, proudest_achievement, best_childhood_memory, funniest_incident, most_embarrassing_moment, favorite_memory_together, advice_for_me, hidden_talent, essential_item, dream_destination, special_message ,user_id)
 
             VALUES
-             ('$fullname','$nickname','$dateofbirth','$email','$phoneno','$gender','$profilephoto','$country','$city','$state','$favoritecolor','$favoritesong','$favoritemovies','$favoriteactress',  '$favoriteactors', '$favoritesinger', '$favoritefood', '$badhabbit', '$personalitywords', '$hobbies', '$dreamgoal', '$biggestfear', '$proudestachievement', '$bestchildhoodmemory', '$funniestincident', '$mostembarrassingmoment', '$favoritememorytogether', '$adviceforme', '$hiddentalent', '$essentialitem', '$dreamdestination', '$specialmessage' );";
+             ('$fullname','$nickname','$dateofbirth','$email','$phoneno','$gender','$profilephoto','$country','$city','$state','$favoritecolor','$favoritesong','$favoritemovies','$favoriteactress',  '$favoriteactors', '$favoritesinger', '$favoritefood', '$badhabbit', '$personalitywords', '$hobbies', '$dreamgoal', '$biggestfear', '$proudestachievement', '$bestchildhoodmemory', '$funniestincident', '$mostembarrassingmoment', '$favoritememorytogether', '$adviceforme', '$hiddentalent', '$essentialitem', '$dreamdestination', '$specialmessage', '$user_id');";
 
                 $result = mysqli_query($conn, $sql);
                 if ($result) {

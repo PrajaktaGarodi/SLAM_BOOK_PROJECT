@@ -158,7 +158,7 @@
                           <th>User</th>
                           <th>Email</th>
                           <th>Phone</th>
-                          <th>Address</th>
+                          <th>Status</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -174,10 +174,10 @@
                             ?>
 
                             <tr>
-                              <td><?php echo $row['username'] ?></td>
+                              <td><?php echo $row['full_name'] ?></td>
                               <td><?php echo $row['email'] ?></td>
-                              <td><?php echo $row['contact'] ?></td>
-                              <td><?php echo $row['address'] ?></td>
+                              <td><?php echo $row['phone_number'] ?></td>
+                              <td><?php echo $row['status'] ?></td>
                               <td> <a href="user_view.php?user_id=<?php echo $row['user_id'] ?>"><i
                                     class="fa-solid fa-eye"></i></a></td>
                             </tr>
@@ -237,16 +237,17 @@
             </nav>
           </div>
 
-          <h1>Welcome User</h1>
+          <!-- <h2>Welcome User</h2> -->
 
           <div class="container">
             <div class="row">
               <div class="col-md-12">
                 <div class="card">
-                  <div class="card-header">
-                    <h1 class=" card-title text-center">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>
                       Your SlamBooks
-                    </h1>
+                    </h4>
+                    <a href="slambook_form.php" class="btn btn-primary"> Create New Slam Book</a>
                   </div>
                   <div class="card-body">
                     <table class="table table-responsive  table-striped">
@@ -319,6 +320,11 @@
                             </tr>
                             <?php
                           }
+
+                        }
+                         else 
+                        {
+                          echo "<td colspan=6 class='text-center'>No records found</td>";
                         }
                         ?>
                       </tbody>
