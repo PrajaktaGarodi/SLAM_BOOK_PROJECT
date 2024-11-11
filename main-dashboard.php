@@ -54,13 +54,7 @@
                 <i class="mdi mdi-home"></i>
               </span> Dashboard
             </h3>
-            <nav aria-label="breadcrumb">
-              <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-              </ul>
-            </nav>
+
           </div>
           <div class="row">
             <div class="col-md-4 stretch-card grid-margin">
@@ -123,8 +117,36 @@
                               <td><?php echo $row['email'] ?></td>
                               <td><?php echo $row['contact'] ?></td>
                               <td><?php echo $row['address'] ?></td>
-                              <td> <a href="user_view.php?user_id=<?php echo $row['user_id'] ?>"><i
-                                    class="fa-solid fa-eye"></i></a></td>
+                              <td>
+                                <a href="user_view.php?user_id=<?php echo $row['user_id'] ?>"><i
+                                    class="fa-solid fa-eye"></i></a>
+
+                                <?php
+                                if ($row['status'] == 'active') {
+                                  ?>
+
+                                  <a href="user_table.php?active_id=<?php echo $row['user_id'] ?>"><i
+                                      class="fa-solid fa-user-pen text-danger"></i></a>
+
+
+                                  <?php
+
+
+                                } else if ($row['status'] == 'inactive') {
+
+                                  ?>
+                                    <a href="user_table.php?active_id=<?php echo $row['user_id'] ?>"><i
+                                        class="fa-solid fa-user-pen text-success"></i></a>
+
+
+                                  <?php
+
+                                }
+
+                                ?>
+                                <a href="user_table.php?delete_id=<?php echo $row['user_id'] ?>"><i
+                                    class="fa-solid fa-trash "> </i></a>
+                              </td>
                             </tr>
 
 
@@ -217,7 +239,20 @@
       <?php
     } elseif ($result['role_id'] == 2) {
 
+      $user_id = $result['user_id'];
 
+      $male = "SELECT * FROM slambook WHERE user_id = $user_id AND  gender = 'male' ; ";
+      $male_result = mysqli_query($conn, $male);
+
+
+
+      $female = "SELECT * FROM slambook WHERE user_id = $user_id AND  gender = 'female' ; ";
+      $female_result = mysqli_query($conn, $female);
+
+
+      $total = "SELECT * FROM slambook WHERE user_id = $user_id ";
+
+      $total_result = mysqli_query($conn, $total);
 
       ?>
       <div class="main-panel">
@@ -228,18 +263,54 @@
                 <i class="mdi mdi-home"></i>
               </span> Dashboard
             </h3>
-            <nav aria-label="breadcrumb">
-              <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-              </ul>
-            </nav>
+
           </div>
 
           <!-- <h2>Welcome User</h2> -->
 
           <div class="container">
+            <div class="row">
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body">
+
+                    <h1 class="font-weight-normal mb-3">Male count</h1>
+                    <h2 class="mb-5">
+                      <?php
+                      echo mysqli_num_rows($male_result);
+                      ?>
+                    </h2>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+
+                    <h1 class="font-weight-normal mb-3">Female Count </h1>
+                    <h2 class="mb-5">
+                      <?php
+                      echo mysqli_num_rows($female_result);
+                      ?>
+                    </h2>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-success card-img-holder text-white">
+                  <div class="card-body">
+
+                    <h1 class="font-weight-normal mb-3">Total Count</h1>
+                    <h2 class="mb-5"><?php
+                    echo mysqli_num_rows($total_result);
+                    ?></h2>
+
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="card">
@@ -270,15 +341,15 @@
                         $sql = "SELECT * FROM  slambook WHERE user_id = $user_id;";
                         $result = mysqli_query($conn, $sql);
 
-                      // Delete code here
-                      // if (isset($_GET['delete_id'])) {
-                      //   $delete_id = $_GET['delete_id'];
-                      //   $sql = "DELETE FROM slambook WHERE id = $delete_id";
-                      //   mysqli_query($conn, $sql);
-                      //   header("Location: main-dashboard.php");
-                      // }
-
+                        // Delete code here
+                        // if (isset($_GET['delete_id'])) {
+                        //   $delete_id = $_GET['delete_id'];
+                        //   $sql = "DELETE FROM slambook WHERE id = $delete_id";
+                        //   mysqli_query($conn, $sql);
+                        //   header("Location: main-dashboard.php");
+                        // }
                       
+
 
                         if (mysqli_num_rows($result)) {
                           while ($row = mysqli_fetch_array($result)) {
@@ -290,25 +361,26 @@
                               <td>
                                 <?php echo $row['email'] ?>
                               </td>
-                             
+
 
                               <td>
                                 <?php echo $row['phone_number'] ?>
                               </td>
                               <td>
-                              <?php
-                              $date = $row['date_of_birth'];
-                              echo date('d-m-Y', strtotime($date));
-                              ?>
+                                <?php
+                                $date = $row['date_of_birth'];
+                                echo date('d-m-Y', strtotime($date));
+                                ?>
                               </td>
                               <td>
                                 <?php echo $row['created_at'] ?>
                               </td>
 
                               <td>
-                                <a href="show_slam_book.php?slambook_id=<?php echo $row['id'] ?>"><i class="fa-solid fa-eye"></i></a>
+                                <a href="show_slam_book.php?slambook_id=<?php echo $row['id'] ?>"><i
+                                    class="fa-solid fa-eye"></i></a>
 
-                                <a href="slam_book_edit.php?slambook_id<?php echo $row['id'] ?>"><i
+                                <a href="slambook_edit.php?slambook_id=<?php echo $row['id'] ?>"><i
                                     class="fa-regular fa-pen-to-square"></i></a>
 
                                 <a href="main-dashboard?delete_id=<?php echo $row['id'] ?>"><i class="fa-solid fa-trash ">
@@ -321,9 +393,7 @@
                             <?php
                           }
 
-                        }
-                         else 
-                        {
+                        } else {
                           echo "<td colspan=6 class='text-center'>No records found</td>";
                         }
                         ?>

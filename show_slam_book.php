@@ -39,7 +39,6 @@
 
         <?php
         include('Common/side_bar.php');
-        if ($result['role_id'] == 2) {
 
             if (isset($_GET['slambook_id'])) {
                 $slambook_id = $_GET['slambook_id'];
@@ -158,6 +157,5 @@
                 </div>
                 <?php
             }
-        }
         ?>
     </div>

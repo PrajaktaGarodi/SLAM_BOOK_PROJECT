@@ -44,6 +44,7 @@
                 $delete_id = $_GET['delete_id'];
 
                 $sql = mysqli_query($conn, "DELETE FROM users WHERE user_id = '$delete_id'");
+                $slambook = mysqli_query($conn, "DELETE FROM slambook WHERE user_id = '$delete_id'");
                 echo "<script>alert('User deleted');</script>";
                 echo "<script>window.location.href = 'user_table.php'</script>";
 
