@@ -80,6 +80,7 @@
                 $dreamdestination = $_POST['dreamdestination'];
                 $specialmessage = $_POST['specialmessage'];
 
+                
 
 
                 $sql="UPDATE slambook set full_name='$fullname', nickname='$nickname', email='$email', date_of_birth='$dateofbirth' , phone_number='$phoneno' , favorite_color='$favoritecolor', favorite_song='$favoritesong', favorite_movie='$favoritemovie' , favorite_actors='$favoriteactors', favorite_actress = '$favoriteactress' , favorite_singer = '$favoritesinger', favorite_food='$favoritefood', bad_habbit='$badhabbit', personality_words = '$personalitywords' , hobbies='$hobbies', dream_goal='$dreamgoal' , biggest_fear ='$biggestfear',  proudest_achievement = '$proudestachievement' , best_childhood_memory = '$bestchildhoodmemory',  funniest_incident='$funniestincident',  most_embarrassing_moment = '$mostembarrassingmoment' , favorite_memory_together = '$favoritememorytogether', advice_for_me = '$adviceforme' , hidden_talent = '$hiddentalent', essential_item = '$essentialitem', dream_destination = '$dreamdestination', special_message = '$specialmessage' WHERE id=$slambook_id ; ";
