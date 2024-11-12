@@ -79,7 +79,7 @@
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <div class="nav-profile-img">
-                                <img src="/assets/dashboard_images/faces/face1.jpg" alt="image">
+                                <img src="/assets/images/<?php echo $result['profile'] ?>" alt="image">
                                 <span class="availability-status online"></span>
                             </div>
                             <div class="nav-profile-text">
@@ -87,8 +87,13 @@
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+                        <div class="nav-profile-img p-3 d-flex justify-content-center">
+                        <img src="/assets/images/<?php echo $result['profile'] ?>" class="rounded-circle w-50 img-fluid
+                        " alt="image">
+                                <span class="availability-status online"></span>
+                            </div>
+                            <a class="dropdown-item" href="user_profile.php">
+                                <i class="mdi mdi-cached me-2 text-success"></i>View Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="logout.php">
                                 <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
