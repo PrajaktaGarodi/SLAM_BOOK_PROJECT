@@ -88,10 +88,15 @@
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                         <div class="nav-profile-img p-3 d-flex justify-content-center">
-                        <img src="/assets/images/<?php echo $result['profile'] ?>" class="rounded-circle w-50 img-fluid
-                        " alt="image">
+                        <img src="/assets/images/<?php echo $result['profile'] ?>" class="rounded-circle w-50 img-fluid" alt="image">
                                 <span class="availability-status online"></span>
                             </div>
+                            <div class="nav-profile-text d-flex flex-column text-center ">
+                                <p class="mb-1 text-black"><?php echo $result['username']?></p>
+                                <p class="text-muted mb-0"><?php echo $result['email']?></p>
+                            </div>
+
+
                             <a class="dropdown-item" href="user_profile.php">
                                 <i class="mdi mdi-cached me-2 text-success"></i>View Profile</a>
                             <div class="dropdown-divider"></div>
@@ -209,12 +214,23 @@
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+                        <div class="nav-profile-img p-3 d-flex justify-content-center">
+                        <img src="/assets/images/<?php echo $result['profile'] ?>" class="rounded-circle w-50 img-fluid" alt="image">
+                                <span class="availability-status online"></span>
+                            </div>
+                            <div class="nav-profile-text d-flex flex-column text-center ">
+                                <p class="mb-1 text-black"><?php echo $result['username']?></p>
+                                <p class="text-muted mb-0"><?php echo $result['email']?></p>
+                            </div>
+
+
+                            <a class="dropdown-item" href="user_profile.php">
+                                <i class="mdi mdi-cached me-2 text-success"></i>View Profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/logout.php">
+                            <a class="dropdown-item" href="logout.php">
                                 <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
                         </div>
+
                     </li>
                     <li class="nav-item d-none d-lg-block full-screen-link">
                         <a class="nav-link">

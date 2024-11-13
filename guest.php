@@ -90,19 +90,33 @@
                                     <h4 class="card-title">Guest In slambook</h4>
                                     <p class="card-description">
                                     </p>
+                                    <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
+                                            <!-- Yaha pr change krna hai -->
                                             <tr>
                                                 <th> Profile </th>
                                                 <th> Guest Name </th>
                                                 <th> Phone No </th>
+                                                <th> Created By </th>
                                                 <th> Status</th>
                                                 <th> Action </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-
+                                            <?php while ($row = mysqli_fetch_assoc($query))
+                                        
+                                            
+                                            {
+                                                $user_id = $row['user_id'];
+                                                // hua run???????
+                                                $sql = "SELECT * FROM users WHERE  user_id = $user_id";
+                                                
+                                                $result = mysqli_query($conn, $sql); 
+                                                $user_data = mysqli_fetch_array($result);
+                                                
+                                                ?>
+                                                   
 
                                                 <tr>
                                                     <td class="py-1">
@@ -110,6 +124,7 @@
                                                     </td>
                                                     <td> <?php echo $row['full_name'] ?> </td>
                                                     <td> <?php echo $row['phone_number'] ?> </td>
+                                                    <td> <?php echo $user_data['username'] ?> </td>
                                                     <td> <?php echo $row['status'] ?> </td>
                                                     <td>
                                                         <a href="show_slam_book.php?slambook_id=<?php echo $row['id'] ?>"><i
@@ -151,6 +166,7 @@
 
                                         </tbody>
                                     </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
