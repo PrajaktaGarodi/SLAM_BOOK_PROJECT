@@ -226,11 +226,9 @@
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a
-                href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
-                class="mdi mdi-heart text-danger"></i></span>
+          <div class="d-flex justify-content-center">
+            <span class=" d-block mt-1 mt-sm-0 text-center">Made with <i
+                class="mdi mdi-heart text-danger"></i> By Slambook</span>
           </div>
         </footer>
         <!-- partial -->
@@ -316,7 +314,7 @@
                 <div class="card">
                   <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>
-                      Your SlamBooks
+                      New Slam Books
                     </h4>
                     <a href="slambook_form.php" class="btn btn-primary"> Create New Slam Book</a>
                   </div>
@@ -338,7 +336,8 @@
                         <?php
 
                         $user_id = $result['user_id'];
-                        $sql = "SELECT * FROM  slambook WHERE user_id = $user_id;";
+                        $currentdate = date('Y-m-d');
+                        $sql = "SELECT * FROM  slambook WHERE DATE(created_at)  = '$currentdate' AND user_id = $user_id;";
                         $result = mysqli_query($conn, $sql);
 
                         // Delete code here
@@ -394,7 +393,7 @@
                           }
 
                         } else {
-                          echo "<td colspan=6 class='text-center'>No records found</td>";
+                          echo "<td colspan=6 class='text-center'>No Slam Book created Today</td>";
                         }
                         ?>
                       </tbody>
@@ -410,11 +409,9 @@
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a
-                href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
-                class="mdi mdi-heart text-danger"></i></span>
+          <div class="d-flex justify-content-center">
+            <span class=" d-block mt-1 mt-sm-0 text-center">Made with <i
+                class="mdi mdi-heart text-danger"></i> By Slambook</span>
           </div>
         </footer>
         <!-- partial -->
