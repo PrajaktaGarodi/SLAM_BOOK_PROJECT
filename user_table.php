@@ -130,7 +130,7 @@
 
                                                         } else if ($row['status'] == 'inactive') {
 
-                                                            .
+                                                            
                                                             
                                                             ?>
                                                                 <a href="user_table.php?active_id=<?php echo $row['user_id'] ?>"><i
