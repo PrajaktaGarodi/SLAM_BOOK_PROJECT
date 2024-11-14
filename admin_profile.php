@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Slam book user view</title>
+    <title>Slam book Admin Profile</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/dashboard_vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/dashboard_vendors/ti-icons/css/themify-icons.css">
@@ -35,7 +35,7 @@
 
         <?php
         include('Common/side_bar.php');
-        if ($result['role_id'] == 2) {
+        if ($result['role_id'] == 1) {
 
                 $user_id= $result['user_id'];
                 $query = "SELECT * FROM users WHERE user_id = $user_id";
@@ -51,7 +51,7 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="container">
-                        <h1>User Profile</h1>
+                        <h1>Admin Profile</h1>
                         <div class="col-md-12 mt-4">
                             <div class="row">
                                 <div class="col-md-4">
@@ -73,7 +73,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <div class="card-title text-center">
-                                                User Details
+                                            Admin Details
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -145,7 +145,7 @@
                                                 
                                                 </div>
 
-                                                <a href="user_profile_edit.php" class="btn btn-primary w-25"> Edit</a>
+                                                <a href="user_profile_edit.php?edit_id=<?php echo $row['user_id'] ?>"></a>
 
 
                                             </div>

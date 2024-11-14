@@ -97,7 +97,7 @@
                             </div>
 
 
-                            <a class="dropdown-item" href="user_profile.php">
+                            <a class="dropdown-item" href="admin_profile.php">
                                 <i class="mdi mdi-cached me-2 text-success"></i>View Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="logout.php">

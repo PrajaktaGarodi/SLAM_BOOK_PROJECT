@@ -93,14 +93,13 @@
                                     <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
-                                            <!-- Yaha pr change krna hai -->
                                             <tr>
                                                 <th> Profile </th>
                                                 <th> Guest Name </th>
                                                 <th> Phone No </th>
                                                 <th> Created By </th>
                                                 <th> Status</th>
-                                                <th> Action </th>
+                                                <td> Action </td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -127,33 +126,11 @@
                                                     <td> <?php echo $user_data['username'] ?> </td>
                                                     <td> <?php echo $row['status'] ?> </td>
                                                     <td>
-                                                        <a href="show_slam_book.php?slambook_id=<?php echo $row['id'] ?>"><i
+                                                        <a href="show_slam_book.php?slambook_id=<?php echo $row['id'] ?>" class="p-1"><i
                                                                 class="fa-solid fa-eye"></i></a>
 
-                                                        <?php
-                                                        if ($row['status'] == 'active') {
-                                                            ?>
-
-                                                            <a href="guest.php?active_id=<?php echo $row['id'] ?>"><i
-                                                                    class="fa-solid fa-slambook-pen text-danger"></i></a>
-
-
-                                                            <?php
-
-
-                                                        } else if ($row['status'] == 'inactive') {
-
-                                                            ?>
-                                                                <a href="guest.php?active_id=<?php echo $row['id'] ?>"><i
-                                                                        class="fa-solid fa-slambook-pen text-success"></i></a>
-
-
-                                                            <?php
-
-                                                        }
-
-                                                        ?>
-                                                        <a href="guest.php?delete_id=<?php echo $row['id'] ?>"><i
+                                                        <a href="slambook_edit.php?slambook_id=<?php echo $row['id'] ?>" class="p-1"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                        <a href="guest.php?delete_id=<?php echo $row['id'] ?>" class="p-1"><i
                                                                 class="fa-solid fa-trash "> </i></a>
                                                     </td>
 
