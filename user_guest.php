@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Slam Book Dashboard</title>
+    <title>Slam Book - User and Guest </title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/dashboard_vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/dashboard_vendors/ti-icons/css/themify-icons.css">
@@ -60,7 +60,7 @@
                         <div class="col-lg-12  grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Users In slambook</h4>
+                                    <h4 class="card-title">Users and Guest Mapping</h4>
                                     <p class="card-description">
                                     </p>
                                     <div class="table-responsive">
