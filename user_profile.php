@@ -37,14 +37,14 @@
         include('Common/side_bar.php');
         if ($result['role_id'] == 2) {
 
-                $user_id= $result['user_id'];
-                $query = "SELECT * FROM users WHERE user_id = $user_id";
-                $result = mysqli_query($conn, $query);
-                $row = mysqli_fetch_assoc($result);
+            $user_id = $result['user_id'];
+            $query = "SELECT * FROM users WHERE user_id = $user_id";
+            $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result);
 
 
 
-            
+
 
             ?>
 
@@ -79,70 +79,55 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                        <h6 class="text-secondary fw-bold">Name :</h6>
-                                                        <p><?php echo $row['username']; ?></p>
-                                                </div>
-                                                
-                                                <div class="col-md-6">
-                                                    
-                                                        <h6 class="text-secondary fw-bold">Email :</h6>
-                                                        <p><?php echo $row['email'];?></p>
-                                                
+                                                    <h6 class="text-secondary fw-bold">Name :</h6>
+                                                    <p><?php echo $row['username']; ?></p>
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    
-                                                        <h6 class="text-secondary fw-bold">Contact:</h6>
-                                                        <p><?php echo $row['contact'];?></p>
-                                                
+
+                                                    <h6 class="text-secondary fw-bold">Email :</h6>
+                                                    <p><?php echo $row['email']; ?></p>
+
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    
-                                                        <h6 class="text-secondary fw-bold">Adderss:</h6>
-                                                        <p><?php echo $row['address'];?></p>
-                                                
+
+                                                    <h6 class="text-secondary fw-bold">Contact:</h6>
+                                                    <p><?php echo $row['contact']; ?></p>
+
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    
-                                                        <h6 class="text-secondary fw-bold">Gender:</h6>
-                                                        <p><?php echo $row['gender'];?></p>
-                                                
+
+                                                    <h6 class="text-secondary fw-bold">Adderss:</h6>
+                                                    <p><?php echo $row['address']; ?></p>
+
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    
-                                                        <h6 class="text-secondary fw-bold">Account Created on:</h6>
-                                                        <p><?php echo $row['created_at'];?></p>
-                                                
+
+                                                    <h6 class="text-secondary fw-bold">Gender:</h6>
+                                                    <p><?php echo $row['gender']; ?></p>
+
                                                 </div>
 
-                                                <div class="col-md-6">
-                                                    
-                                                        <h6 class="text-secondary fw-bold">Account Update On:</h6>
-                                                        <p><?php echo $row['updated_at'];?></p>
-                                                
-                                                </div>
-                                                
-                                                <div class="col-md-6">
-                                                    
-                                                        <h6 class="text-secondary fw-bold">Status :</h6>
-                                                        
-                                                            <?php 
-                                                                if ($row['status'] =='active') 
-                                                                {
-                                                                    echo '<p class="text-success"> Active </p>';
-                                                                } 
-                                                                else 
-                                                                {
-                                                                    echo '<p class="text-danger"> Inactive </p>';
-                                                                }
 
-                                                        
-                                                            ?>
-                                                        
-                                                
+
+                                                <div class="col-md-6">
+
+                                                    <h6 class="text-secondary fw-bold">Status :</h6>
+
+                                                    <?php
+                                                    if ($row['status'] == 'active') {
+                                                        echo '<p class="text-success"> Active </p>';
+                                                    } else {
+                                                        echo '<p class="text-danger"> Inactive </p>';
+                                                    }
+
+
+                                                    ?>
+
+
                                                 </div>
 
                                                 <a href="user_profile_edit.php" class="btn btn-primary w-25"> Edit</a>
