@@ -46,34 +46,12 @@
                 $sql = mysqli_query($conn, "DELETE FROM slambook WHERE id = $delete_id");
                 // $slambook = mysqli_query($conn, "DELETE FROM slambook guestid ='$delete_id");
                 echo "<script>alert('User deleted');</script>";
-                echo "<script>window.location.href = 'guest.php'</script>";
+                echo "<script>window.location.href = 'user_guest_view.php'</script>";
 
 
             }
 
-            if (isset($_GET['active_id'])) {
-                $rid = intval($_GET['active_id']);
-
-                $check = "SELECT * FROM slambook;";
-
-                $result = mysqli_query($conn, $check);
-                $check_row = mysqli_fetch_array($result);
-
-                $status = $check_row['status'];
-
-                if ($status == 'inactive') {
-
-
-                    $sql = mysqli_query($conn, "UPDATE slambook SET status = 'active' WHERE slambook_id = '$rid'");
-                    echo "<script>alert('User Activated');</script>";
-                    echo "<script>window.location.href = 'guest.php'</script>";
-                }
-                if ($status == 'active') {
-                    $sql = mysqli_query($conn, "UPDATE slambook SET status = 'inactive' WHERE slambook_id = '$rid'");
-                    echo "<script>alert('User Deactivated');</script>";
-                    echo "<script>window.location.href = 'guest.php'</script>";
-                }
-            }
+          
 
             $user_id = $result['user_id'];
             $sql = "SELECT * FROM slambook WHERE user_id = $user_id";
@@ -130,7 +108,7 @@
                                                                 class="fa-solid fa-eye"></i></a>
 
                                                         <a href="slambook_edit.php?slambook_id=<?php echo $row['id'] ?>" class="p-1"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                        <a href="guest.php?delete_id=<?php echo $row['id'] ?>" class="p-1"><i
+                                                        <a href="user_guest_view.php?delete_id=<?php echo $row['id'] ?>" class="p-1"><i
                                                                 class="fa-solid fa-trash "> </i></a>
                                                     </td>
 

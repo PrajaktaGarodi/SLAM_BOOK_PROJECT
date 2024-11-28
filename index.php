@@ -107,7 +107,7 @@
                     >
                   </div>
                   <div class="w-50 text-md-right">
-                    <a href="#" style="color: #fff">Forgot Password</a>
+                    <a href="forget_password.php" style="color: #fff">Forgot Password</a>
                   </div>
                 </div>
               </form>
